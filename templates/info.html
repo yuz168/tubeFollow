@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>情報 - 簡易YouTube</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="/">簡易YouTube</a></h1>
+            <nav>
+                <form action="/search" method="get" class="search-bar">
+                    <input type="text" name="q" placeholder="動画を検索...">
+                    <button type="submit">検索</button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>システム情報</h2>
+        <p><strong>YouTube API (動画情報取得):</strong> {{ Youtube_API }}</p>
+        <p><strong>Channel API (チャンネル情報取得):</strong> {{ Channel_API }}</p>
+        <p><strong>Comments API (コメント情報取得):</strong> {{ Comments_API }}</p>
+        <p>この情報ページは、使用されているAPIのエンドポイントを表示しています。</p>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 簡易YouTube. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
