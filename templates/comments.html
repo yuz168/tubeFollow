@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コメント</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body { background-color: #f9f9f9; padding: 10px; margin: 0; font-family: sans-serif; }
+        .comment-item {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .comment-author-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+        .comment-content {
+            flex-grow: 1;
+        }
+        .comment-author-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .comment-body {
+            font-size: 0.9em;
+            color: #333;
+        }
+        .no-comments {
+            text-align: center;
+            color: #666;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    {% if comments %}
+        {% for comment in comments %}
+        <div class="comment-item">
+            {% if comment.authoricon %}
+                <img src="{{ comment.authoricon }}" alt="{{ comment.author }}のアイコン" class="comment-author-icon">
+            {% endif %}
+            <div class="comment-content">
+                <p class="comment-author-name">{{ comment.author }}</p>
+                <p class="comment-body">{{ comment.body | safe }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="no-comments">コメントがありません。</p>
+    {% endif %}
+</body>
+</html>
