@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ word }} の検索結果 - 簡易YouTube</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="/">簡易YouTube</a></h1>
+            <nav>
+                <form action="/search" method="get" class="search-bar">
+                    <input type="text" name="q" placeholder="動画を検索..." value="{{ word }}">
+                    <button type="submit">検索</button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>「{{ word }}」の検索結果</h2>
+        {% if results %}
+            <div class="video-grid">
+                {% for video in results %}
+                <div class="video-item">
+                    <a href="/watch?v={{ video.id }}">
+                        <img src="/thumbnail?v={{ video.id }}" alt="{{ video.title }}">
+                        <h3>{{ video.title }}</h3>
+                    </a>
+                    <p class="video-author">{{ video.author }}</p>
+                    <p class="video-published">{{ video.published }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% if next %}
+            <div class="pagination">
+                <a href="{{ next }}" class="button">次のページへ</a>
+            </div>
+            {% endif %}
+        {% else %}
+            <p>検索結果が見つかりませんでした。</p>
+        {% endif %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 簡易YouTube. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
