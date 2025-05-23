@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+requests
+Youtube-python
+yt-dlp
+Jinja2
+cachetools
